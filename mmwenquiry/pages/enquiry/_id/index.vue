@@ -16,6 +16,7 @@
                 <p>Email: {{ enqEmail }}</p>
                 <p>Size of item selected: {{ enqSize }}</p>
                 <p>Have you found this item cheaper on a competitor website? {{ enqComp }}</p>
+                <p>Competitor URL: {{ enqCompURL }}</p>
                 <p>Enquiry Message:</p>
                 <p>{{ enqMsg }}</p>
                 
@@ -46,6 +47,7 @@ export default {
             enqEmail: this.$store.state.enqEmail,
             enqSize: this.$store.state.enqSize,
             enqComp: this.$store.state.enqComp,
+            enqCompURL: this.$store.state.enqCompURL,
 
         };
     },
@@ -86,23 +88,32 @@ export default {
             enquiryForm.append('fullname',this.enqName);
             enquiryForm.append('email',this.enqEmail);
             enquiryForm.append('competitor',this.enqComp);
-            enquiryForm.append('competitorUrl','');
+            enquiryForm.append('competitorUrl',this.enqCompURL);
             enquiryForm.append('enquiry',this.enqMsg);
 
             this.$axios.post("https://frontendtest.mainlinemenswear.co.uk/submit", enquiryForm)
             .then(function (response) {
+                
                 console.log(response);
+
+                this.$router.push('/confirmation');
 
             })
             .catch(function (error) {
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-                return error.response.status;
+                if(error.response){
+                    // Return the Error Response Data
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                    return error.response.status;
+                }
+                else if(error.request){
+                    console.log(error.request);      
+                }
+                else {
+                    console.log('Error Can\'t be defined: ', error.message);
+                }
             });
-
-
-
 
         }
 

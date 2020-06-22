@@ -38,18 +38,23 @@
                 <p class="formText">Have you find this item cheaper on a competitor website? *</p>
                 <div class="field">
                     <div class="control">
-                        <input type="radio" name="question" id="compYes" class="compCheck" value="yes" v-model="enqComp">
+                        <input type="radio" name="question" id="compYes" class="compCheck" value="yes" v-model="enqComp" @click="toggleURLentry()">
                         <label class="radio" for="compYes">Yes</label>
 
-                        <input type="radio" name="question"  id="compNo" checked class="compCheck" value="no" v-model="enqComp">
+                        <input type="radio" name="question"  id="compNo" checked class="compCheck" value="no" v-model="enqComp" @click="toggleURLentry()">
                         <label class="radio" for="compNo">No</label>
 
                     </div>
                 </div>
             
+                <p class="formText compURLentry">Competitor URL: </p><span class="errmsg compURLentry" id="compURLerr"></span>
+                <div class="control compURLentry">
+                    <input class="input" type="text" id="compURLfield" @keyup="validateCompURL()" v-model="enqCompURL">
+                </div>
+
                 <p class="formText">Enquiry message *</p><span id="msgCount">(0/200)</span><span class="errmsg" id="msgErr"></span>
                 <div class="control">
-                    <input class="input" type="text" id="msgField" @keyup="validateMessage()" required maxlength="200" v-model="enqMsg">
+                    <input class="input" type="text" id="msgField" @keyup="validateMessage()" required minlength="50" maxlength="200" v-model="enqMsg">
                 </div>    
             
                 <p class="formText">Fields marked with an asterisk * are compulsory.</p>
@@ -82,6 +87,7 @@ export default {
             enqEmail: this.$store.state.enqEmail,
             enqSize: this.$store.state.enqSize,
             enqComp: this.$store.state.enqComp,
+            enqCompURL: this.$store.state.enqCompURL,
 
         };
     },
@@ -112,6 +118,18 @@ export default {
     },
 
     methods: {
+
+        toggleURLentry() {
+
+            if(document.getElementById('compYes').checked == true) {
+
+            } else {
+
+
+            }
+
+
+        },
 
         validateName(){
 
@@ -190,6 +208,58 @@ export default {
 
         },
 
+        validateCompURL() {
+
+            const regex = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
+
+            var validURL = regex.test(this.enqCompURL);
+
+            //if the url was valid
+            if (validURL) {
+
+                //hides error message
+                document.getElementById("compURLerr").style = "display: none";
+
+                return true;
+
+            } else {
+
+                //displays error message and disables the submit form button
+                document.getElementById("compURLerr").innerHTML = " Please enter a valid web address";
+                document.getElementById("compURLfield").style.border = "1px solid #ff5050";
+
+                return false;
+
+            }
+
+        },
+
+        saveStoreData() {
+
+            this.$store.commit("saveName", this.enqName);
+            console.log('added name to store');
+
+            this.$store.commit("saveEmail", this.enqEmail);
+            console.log('added email to store');
+
+             this.$store.commit("saveMsg", this.enqMsg);
+            console.log('added message to store');
+
+            this.$store.commit("saveComp", this.enqComp);
+            console.log('added message to store');
+                    
+            this.$store.commit("saveSize", this.enqSize);
+            console.log('added message to store');
+
+            this.$store.commit("saveCompURL", this.enqCompURL);
+            console.log('added comp url to store');
+
+
+            this.$router.push({name: 'enquiry-id', params: { id:this.enqProdID} });
+
+
+        },
+
         validateForm() {
 
             //assigns values to variables
@@ -199,23 +269,28 @@ export default {
 
             //if all the inputs are valid
             if (isNameValid && isEmailValid && isMsgValid) {
-                
-                this.$store.commit("saveName", this.enqName);
-                console.log('added name to store');
 
-                this.$store.commit("saveEmail", this.enqEmail);
-                console.log('added email to store');
+                if(document.getElementById("compYes").checked == true) {
 
-                this.$store.commit("saveMsg", this.enqMsg);
-                console.log('added message to store');
+                    var validCompURL = this.validateCompURL();
 
-                this.$store.commit("saveComp", this.enqComp);
-                console.log('added message to store');
-                    
-                this.$store.commit("saveSize", this.enqSize);
-                console.log('added message to store');
+                    if(validCompURL) {
 
-                this.$router.push({name: 'enquiry-id', params: { id:this.enqProdID} });
+                        this.saveStoreData();
+
+
+                    } else {
+
+                        alert("plese check the URL you entered for errors.");
+
+                    }
+
+
+                } else {
+
+                    this.saveStoreData();
+
+                }
 
             } else {
 
