@@ -79,21 +79,29 @@ export default {
 
         postData() {
 
-            this.$axios.post('https://frontendtest.mainlinemenswear.co.uk/submit', {
-                productId: this.enqProdID,
-                sizeSelected: this.enqSize,
-                fullname: this.enqName,
-                email: this.enqEmail,
-                competitor: this.enqComp,
-                competitorUrl: '',
-                enquiry: this.enqMsg
-            })
+            var enquiryForm = new FormData();
+
+            enquiryForm.append('productId',this.enqProdID);
+            enquiryForm.append('sizeSelected',this.enqSize);
+            enquiryForm.append('fullname',this.enqName);
+            enquiryForm.append('email',this.enqEmail);
+            enquiryForm.append('competitor',this.enqComp);
+            enquiryForm.append('competitorUrl','');
+            enquiryForm.append('enquiry',this.enqMsg);
+
+            this.$axios.post("https://frontendtest.mainlinemenswear.co.uk/submit", enquiryForm)
             .then(function (response) {
                 console.log(response);
+
             })
             .catch(function (error) {
-                console.log(error);
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+                return error.response.status;
             });
+
+
 
 
         }
