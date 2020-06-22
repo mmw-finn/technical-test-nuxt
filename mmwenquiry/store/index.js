@@ -4,7 +4,7 @@ export const state = () => ({
   enqName: '',
   enqEmail: '',
   enqMsg: '',
-  enqCompetitor: '',
+  enqComp: '',
   enqSize: ''
 
 })
@@ -20,11 +20,11 @@ export const mutations = {
     
   },
 
-  saveEmail(state, payload) { state.enqEmail = payload.enqEmail },
-  saveName(state, payload) { state.enqName = payload.enqName },
-  saveMsg(state, payload) { state.enqMsg = payload.enqMsg },
-  saveComp(state, payload) { state.enqComp = payload.enqComp },
-  saveSize(state, payload) { state.enqSize = payload.enqSize }
+  saveEmail(state, payload) { state.enqEmail = payload },
+  saveName(state, payload) { state.enqName = payload },
+  saveMsg(state, payload) { state.enqMsg = payload },
+  saveComp(state, payload) { state.enqComp = payload },
+  saveSize(state, payload) { state.enqSize = payload }
 
 }
 

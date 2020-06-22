@@ -71,16 +71,17 @@ import DataHolder from '~/components/productDetails.vue'
 
 export default {
 
+
     data() {
 
         return {
 
             enqProdID: 0,
-            enqName: '',
-            enqMsg: '',
-            enqEmail: '',
-            enqSize: '',
-            enqComp: ''
+            enqName: this.$store.state.enqName,
+            enqMsg: this.$store.state.enqMsg,
+            enqEmail: this.$store.state.enqEmail,
+            enqSize: this.$store.state.enqSize,
+            enqComp: this.$store.state.enqComp,
 
         };
     },
@@ -199,10 +200,6 @@ export default {
             //if all the inputs are valid
             if (isNameValid && isEmailValid && isMsgValid) {
                 
-                alert("good job, nice form.");
-
-                alert(this.enqName + ' ' + this.enqEmail + ' ' +  this.enqMsg + ' ' + this.enqComp + ' ' + this.enqSize);
-
                 this.$store.commit("saveName", this.enqName);
                 console.log('added name to store');
 
@@ -214,7 +211,7 @@ export default {
 
                 this.$store.commit("saveComp", this.enqComp);
                 console.log('added message to store');
-                
+                    
                 this.$store.commit("saveSize", this.enqSize);
                 console.log('added message to store');
 
@@ -231,14 +228,6 @@ export default {
         },
 
     },
-
-    beforeDestroy() {
-
-
-
-
-
-    }
 
 }
 </script>

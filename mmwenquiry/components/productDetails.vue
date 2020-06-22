@@ -40,7 +40,22 @@ export default {
 
         storeItemID(id) {
             this.$store.commit("saveID", id);
-            console.log('added ' + id + ' to store');
+
+            this.$store.commit("saveName", '');
+            console.log('added name to store');
+
+            this.$store.commit("saveEmail", '');
+            console.log('added email to store');
+
+            this.$store.commit("saveMsg", '');
+            console.log('added message to store');
+
+            this.$store.commit("saveComp", '');
+            console.log('added message to store');
+                
+            this.$store.commit("saveSize", '');
+            console.log('added message to store');
+
         }
     }
 }

@@ -20,7 +20,7 @@
                 <p>{{ enqMsg }}</p>
                 
                 <div class="control">
-                    <button class="button is-primary" id="submitEnquiry" @click="validateForm()">Submit</button>
+                    <button class="button is-primary" id="submitEnquiry" @click="postData()">Submit</button>
                 </div>
 
             </div>
@@ -45,7 +45,7 @@ export default {
             enqMsg: this.$store.state.enqMsg,
             enqEmail: this.$store.state.enqEmail,
             enqSize: this.$store.state.enqSize,
-            enqComp: this.$store.state.enqCompetitor,
+            enqComp: this.$store.state.enqComp,
 
         };
     },
@@ -74,6 +74,31 @@ export default {
             }
         });
     },
+
+    methods: {
+
+        postData() {
+
+            this.$axios.post('https://frontendtest.mainlinemenswear.co.uk/submit', {
+                productId: this.enqProdID,
+                sizeSelected: this.enqSize,
+                fullname: this.enqName,
+                email: this.enqEmail,
+                competitor: this.enqComp,
+                competitorUrl: '',
+                enquiry: this.enqMsg
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+        }
+
+    }
 
 }
 </script>
