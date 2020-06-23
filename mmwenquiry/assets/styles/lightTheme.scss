@@ -1,5 +1,48 @@
 $ltBtnColor: #20c76e;
 $ltBtnAccent: #94e990;
-$ltFont: 'Muli', sans-serif;
 $ltAccent: #64c1f7;
 $ltExclusiveAccent: #d0eeff;
+$ltFont: 'Muli', sans-serif;
+
+.light-mode .pageContent {
+
+    font-family: $ltFont;
+  
+}
+
+.light-mode .has-bg-img {
+
+    background-image: url("/lightbg.jpg");
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-size:  cover;
+    background-color: var(--bg);
+}
+
+.light-mode .exclusive {
+
+    background-color: $ltExclusiveAccent;
+  
+}
+
+.light-mode #darkTheme {
+
+    visibility: hidden;
+  
+}
+
+.light-mode .button {
+
+    border-radius: 0px;
+
+
+}
+
+.light-mode .pageHeader {
+
+    font-family: $ltFont;
+  
+  
+}
+

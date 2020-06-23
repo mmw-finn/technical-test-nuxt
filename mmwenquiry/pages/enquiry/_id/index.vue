@@ -1,32 +1,37 @@
 <template>
-    
+
+    <div class="pageContent">
+
         <div class="tile is-ancestor menuTile">
 
-        <div class="tile leftTile is-3">
+            <div class="tile leftTile is-3">
 
-            <!-- Data passed in to component to create a view of the item and its details -->
-            <DataHolder :pID="prodID" :pName="prodName" :pPrice="prodPrice" :pSalePrice="prodSalePrice" :pExclusive="prodExclusive" />
-       
-        </div>
-        
-        <div class="tile rightTile is-5">
+                <!-- Data passed in to component to create a view of the item and its details -->
+                <DataHolder :pID="prodID" :pName="prodName" :pPrice="prodPrice" :pSalePrice="prodSalePrice" :pExclusive="prodExclusive" />
+            
+            </div>
+            
+            <div class="tile rightTile is-5">
 
                 <div class="column">
-                <p>Full Name: {{ enqName }}</p>
-                <p>Email: {{ enqEmail }}</p>
-                <p>Size of item selected: {{ enqSize }}</p>
-                <p>Have you found this item cheaper on a competitor website? {{ enqComp }}</p>
-                <p>Competitor URL: {{ enqCompURL }}</p>
-                <p>Enquiry Message:</p>
-                <p>{{ enqMsg }}</p>
-                
-                <div class="control">
-                    <button class="button is-primary" id="submitEnquiry" @click="postData()">Submit</button>
+                    <p>Full Name: {{ enqName }}</p>
+                    <p>Email: {{ enqEmail }}</p>
+                    <p>Size of item selected: {{ enqSize }}</p>
+                    <p>Have you found this item cheaper on a competitor website? {{ enqComp }}</p>
+                    <p>Competitor URL: {{ enqCompURL }}</p>
+                    <p>Enquiry Message:</p>
+                    <p>{{ enqMsg }}</p>
+                    
+                    <div class="control">
+                        <button class="button is-primary" id="submitEnquiry" @click="postData()">Submit</button>
+                    </div>
+
                 </div>
 
             </div>
 
         </div>
+
     </div>
 
 </template>
@@ -121,3 +126,13 @@ export default {
 
 }
 </script>
+
+<style scoped>
+
+.enqBtn {
+
+    visibility: hidden;
+
+}
+
+</style>

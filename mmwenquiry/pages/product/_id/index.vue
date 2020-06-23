@@ -1,72 +1,77 @@
 <template>
 
-    <div class="tile is-ancestor menuTile">
+    <div class="pageContent">
 
-        <div class="tile leftTile is-3">
+        <div class="tile is-ancestor menuTile">
 
-            <!-- Data passed in to component to create a view of the item and its details -->
-            <DataHolder :pID="prodID" :pName="prodName" :pPrice="prodPrice" :pSalePrice="prodSalePrice" :pExclusive="prodExclusive" />
-       
-        </div>
+            <div class="tile leftTile is-3">
 
-        <div class="tile is-2">
-
-            <p class="formText">SELECT YOUR SIZE: *</p>
-            <div class="control">
-                <select id="sizeDropdown" v-model="enqSize">
-                    <option disabled value="">Please select a size</option>
-                    <option v-for="size in sizes" :value="size.size">{{size.size}}</option>
-                </select>
+                <!-- Data passed in to component to create a view of the item and its details -->
+                <DataHolder :pID="prodID" :pName="prodName" :pPrice="prodPrice" :pSalePrice="prodSalePrice" :pExclusive="prodExclusive" />
+        
             </div>
 
-        </div>
-        
-        <div class="tile rightTile is-5">
+            <div class="tile is-2">
 
-            <div class="column" id="enquiryForm">
-
-                <p class="formText">Full name: *</p><span class="errmsg" id="nameErr"></span>
+                <p class="formText">SELECT YOUR SIZE: *</p>
                 <div class="control">
-                    <input class="input" type="text" id="nameField" @keyup="validateName()" v-model="enqName" required>
-                </div>
-        
-                <p class="formText">Email: *</p><span class="errmsg" id="emailErr"></span>
-                    <div class="control">
-                        <input class="input" type="text" id="emailField" @keyup="validateEmail()" v-model="enqEmail" required>
-                    </div>
-        
-                <p class="formText">Have you find this item cheaper on a competitor website? *</p>
-                <div class="field">
-                    <div class="control">
-                        <input type="radio" name="question" id="compYes" class="compCheck" value="yes" v-model="enqComp" @click="toggleURLentry()">
-                        <label class="radio" for="compYes">Yes</label>
-
-                        <input type="radio" name="question"  id="compNo" checked class="compCheck" value="no" v-model="enqComp" @click="toggleURLentry()">
-                        <label class="radio" for="compNo">No</label>
-
-                    </div>
-                </div>
-            
-                <p class="formText compURLentry">Competitor URL: </p><span class="errmsg compURLentry" id="compURLerr"></span>
-                <div class="control compURLentry">
-                    <input class="input" type="text" id="compURLfield" @keyup="validateCompURL()" v-model="enqCompURL">
-                </div>
-
-                <p class="formText">Enquiry message *</p><span id="msgCount">(0/200)</span><span class="errmsg" id="msgErr"></span>
-                <div class="control">
-                    <input class="input" type="text" id="msgField" @keyup="validateMessage()" required minlength="50" maxlength="200" v-model="enqMsg">
-                </div>    
-            
-                <p class="formText">Fields marked with an asterisk * are compulsory.</p>
-            
-                <div class="control">
-                    <button class="button is-primary" id="submitEnquiry" @click="validateForm()">Submit</button>
+                    <select id="sizeDropdown" v-model="enqSize">
+                        <option disabled value="">Please select a size</option>
+                        <option v-for="size in sizes" :value="size.size">{{size.size}}</option>
+                    </select>
                 </div>
 
             </div>
+            
+            <div class="tile rightTile is-5">
 
+                <div class="column" id="enquiryForm">
+
+                    <p class="formText">Full name: *</p><span class="errmsg" id="nameErr"></span>
+                    <div class="control">
+                        <input class="input" type="text" id="nameField" @keyup="validateName()" v-model="enqName" required>
+                    </div>
+            
+                    <p class="formText">Email: *</p><span class="errmsg" id="emailErr"></span>
+                        <div class="control">
+                            <input class="input" type="text" id="emailField" @keyup="validateEmail()" v-model="enqEmail" required>
+                        </div>
+            
+                    <p class="formText">Have you find this item cheaper on a competitor website? *</p>
+                    <div class="field">
+                        <div class="control">
+                            <input type="radio" name="question" id="compYes" class="compCheck" value="yes" v-model="enqComp" @click="toggleURLentry()">
+                            <label class="radio" for="compYes">Yes</label>
+
+                            <input type="radio" name="question"  id="compNo" checked class="compCheck" value="no" v-model="enqComp" @click="toggleURLentry()">
+                            <label class="radio" for="compNo">No</label>
+
+                        </div>
+                    </div>
+                
+                    <p class="formText compURLentry">Competitor URL: </p><span class="errmsg compURLentry" id="compURLerr"></span>
+                    <div class="control compURLentry">
+                        <input class="input" type="text" id="compURLfield" @keyup="validateCompURL()" v-model="enqCompURL" disabled>
+                    </div>
+
+                    <p class="formText">Enquiry message *</p><span id="msgCount">(0/200)</span><span class="errmsg" id="msgErr"></span>
+                    <div class="control">
+                        <input class="input" type="text" id="msgField" @keyup="validateMessage()" required minlength="50" maxlength="200" v-model="enqMsg">
+                    </div>    
+                
+                    <p class="formText">Fields marked with an asterisk * are compulsory.</p>
+                
+                    <div class="control">
+                        <button class="button is-primary" id="submitEnquiry" @click="validateForm()">Submit</button>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
+
     </div>
+
 
 </template>
 
@@ -123,8 +128,12 @@ export default {
 
             if(document.getElementById('compYes').checked == true) {
 
-            } else {
+                document.getElementById('compURLfield').disabled = false;
 
+            } else {
+                
+                document.getElementById('compURLfield').innerText = "";
+                document.getElementById('compURLfield').disabled = true;
 
             }
 
@@ -210,50 +219,41 @@ export default {
 
         validateCompURL() {
 
-            const regex = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
+            if(this.enqComp == true) {
 
-            var validURL = regex.test(this.enqCompURL);
+                const regex = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
 
-            //if the url was valid
-            if (validURL) {
+                var validURL = regex.test(this.enqCompURL);
 
-                //hides error message
-                document.getElementById("compURLerr").style = "display: none";
+                //if the url was valid
+                if (validURL) {
 
-                return true;
+                    //hides error message
+                    document.getElementById("compURLerr").style = "display: none";
 
-            } else {
+                    return true;
 
-                //displays error message and disables the submit form button
-                document.getElementById("compURLerr").innerHTML = " Please enter a valid web address";
-                document.getElementById("compURLfield").style.border = "1px solid #ff5050";
+                } else {
 
-                return false;
+                    //displays error message and disables the submit form button
+                    document.getElementById("compURLerr").innerHTML = " Please enter a valid web address";
+                    document.getElementById("compURLfield").style.border = "1px solid #ff5050";
+
+                    return false;
+
+                }
 
             }
-
         },
 
         saveStoreData() {
 
             this.$store.commit("saveName", this.enqName);
-            console.log('added name to store');
-
             this.$store.commit("saveEmail", this.enqEmail);
-            console.log('added email to store');
-
              this.$store.commit("saveMsg", this.enqMsg);
-            console.log('added message to store');
-
             this.$store.commit("saveComp", this.enqComp);
-            console.log('added message to store');
-                    
             this.$store.commit("saveSize", this.enqSize);
-            console.log('added message to store');
-
             this.$store.commit("saveCompURL", this.enqCompURL);
-            console.log('added comp url to store');
-
 
             this.$router.push({name: 'enquiry-id', params: { id:this.enqProdID} });
 

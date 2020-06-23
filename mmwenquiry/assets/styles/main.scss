@@ -1,0 +1,143 @@
+@import 'lightTheme';
+@import 'darkTheme';
+
+$red: #ff5050;
+$darkGrey: #333333;
+$darkBlue: #107ccb;
+$paleGrey: #e3e3e3;
+
+/* SASS Theme Declarations */
+
+/*
+
+color - main text colour
+color-primary - button color
+color-secondary - button hover color
+bg - main background color
+bg-secondary - gradient background color
+border-color - exclusive accent color
+
+*/
+
+/* :root {
+  --color: #000000;
+  --color-primary: #20c76e;
+  --color-secondary: #94e990;
+  --bg: #107ccb;
+  --bg-secondary: #64c1f7;
+  --border-color: #d0eeff;
+} */
+
+.light-mode {
+  --color: #000000;
+  --color-primary: #20c76e;
+  --color-secondary: #94e990;
+  --bg: white;
+  --bg-secondary: #107ccb;
+  --border-color: #64c1f7;
+}
+
+.dark-mode {
+  --color: #e3e3e3;
+  --color-primary: #fdd842;
+  --color-secondary: #fdeba1;
+  --bg: #333333;
+  --bg-secondary: #333333;
+  --border-color: #616161;
+}
+
+/* Implementation of themes */
+
+.pageHeader {
+
+  background-color: var(--bg);
+  color: var(--color);
+
+}
+
+.pageContent {
+
+  background-image: linear-gradient(to top right, var(--bg-secondary), var(--border-color));
+  color: var(--color);
+  text-align: center;
+
+}
+
+.icon {
+  font-size: 2em;
+  color: var(--color); 
+}
+
+.themeIndicator {
+   font-size: .75em;
+   margin-left: 0;
+   margin-right: 0;
+   color: var(--color-primary);
+}
+
+.button {
+
+  font-weight: 900;
+  background-color: var(--color-primary);
+  color: var(--bg);
+  border-radius: 28px;
+  cursor: pointer;
+  border: none;
+  margin: 0px 10px;
+  text-align: center;
+
+}
+
+.tile {
+
+  margin: 25px;
+  margin-top: 75px;
+  margin-bottom: 75px;
+
+}
+
+.productContainer {
+
+  background-color: var(--bg);
+  color: var(--color);
+
+}
+
+.pimg {
+
+  height: 256px;
+  width: 256px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.exclusive {
+
+  width: 256px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.errmsg, .productSalePrice {
+
+  color: $red;
+
+
+}
+
+.headTitle {
+
+  font-weight: 400;
+  font-size: 2em;
+
+}
+
+.backBtn {
+
+  position: absolute;
+  right: 0px;
+
+}

@@ -1,5 +1,40 @@
 $dtBtnColor: #fdd842;
 $dtBtnAccent: #fdeba1;
-$dtFont: 'Roboto Slab', serif;
 $dtAccent: #616161;
-$dtEclusiveAccent: #107ccb;
+$dtExclusiveAccent: #107ccb;
+$dtFont: 'Roboto Slab', serif;
+
+.dark-mode .pageContent {
+
+    font-family: $dtFont;
+  
+}
+
+.dark-mode .has-bg-img {
+    background-image: url("/darkbg.jpg");
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-size:  cover;
+    background-color: var(--bg);
+}
+
+.dark-mode .exclusive {
+
+    background-color: $dtExclusiveAccent;
+  
+}
+
+.dark-mode #lightTheme {
+
+    visibility: hidden;
+  
+}
+
+.dark-mode .pageHeader {
+
+    font-family: $dtFont;
+  
+  
+}
+

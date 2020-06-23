@@ -1,24 +1,30 @@
 <template>
- <!-- tiles hold product information and link to enquiry form about each one-->
-    <div class="tile is-ancestor menuTile">
 
-        <div class="tile lefttile">
+    <div class="pageContent">
 
-            <DataHolder :pID="prod1id" :pName="prod1name" :pPrice="prod1price" :pSalePrice="prod1salePrice" :pExclusive="prod1ex" />
+        <!-- tiles hold product information and link to enquiry form about each one-->
+        <div class="tile is-ancestor menuTile">
+
+            <div class="tile lefttile">
+
+                <DataHolder :pID="prod1id" :pName="prod1name" :pPrice="prod1price" :pSalePrice="prod1salePrice" :pExclusive="prod1ex" />
+            </div>
+
+            <div class="tile">
+
+                <DataHolder :pID="prod2id" :pName="prod2name" :pPrice="prod2price" :pSalePrice="prod2salePrice" :pExclusive="prod2ex" />
+
+            </div>
+            
+            <div class="tile righttile">
+
+                <DataHolder :pID="prod3id" :pName="prod3name" :pPrice="prod3price" :pSalePrice="prod3salePrice" :pExclusive="prod3ex" />
+
+            </div>
         </div>
 
-        <div class="tile">
-
-            <DataHolder :pID="prod2id" :pName="prod2name" :pPrice="prod2price" :pSalePrice="prod2salePrice" :pExclusive="prod2ex" />
-
-        </div>
-        
-        <div class="tile righttile">
-
-            <DataHolder :pID="prod3id" :pName="prod3name" :pPrice="prod3price" :pSalePrice="prod3salePrice" :pExclusive="prod3ex" />
-
-        </div>
     </div>
+
 </template>
 
 <script>
@@ -65,3 +71,13 @@ export default {
 
 }
 </script>
+
+<style lang="css" scoped>
+
+.headTitle {
+
+    visibility: visible;
+
+}
+
+</style>

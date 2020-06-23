@@ -1,35 +1,35 @@
 <template>
     <section class="hero">
-        <div class="hero-body">
+        <div class="hero-body pageHeader">
             <div class="container">
-            <sup><fa :icon="['fas', 'circle']" class="themeIndicator icon lightTheme" /></sup>
-            <fa :icon="['fas', 'sun']" class="icon" />
-            <fa :icon="['fas', 'moon']" class="icon" />
-            <sup><fa :icon="['fas', 'circle']" class="themeIndicator icon darkTheme" /></sup>
-            <h1 class="title">Product Enquiry Web Application</h1>
-            <fa :icon="['fas', 'chevron-circle-left']" class="icon backBtn" @click="historyBack()"/>
+                
+                <span class="iconContainer">
+                    <sup><fa :icon="['fas', 'circle']" class="themeIndicator" id="lightTheme" /></sup>
+                    <fa :icon="['fas', 'sun']" class="icon" @click="$colorMode.preference = 'light'"/>
+                    <fa :icon="['fas', 'moon']" class="icon" @click="$colorMode.preference = 'dark'"/>
+                    <sup><fa :icon="['fas', 'circle']" class="themeIndicator" id="darkTheme" /></sup>
+                </span>
+            
+                <h1 class="headTitle">Product Enquiry Web Application</h1>
+                <fa :icon="['fas', 'chevron-circle-left']" class="icon backBtn" @click="historyBack()"/>
+
             </div>
         </div>
     </section>
 </template>
 
-<style scoped>
-    .icon {
-       font-size: 2em;
-       color: black; 
-    }
-
-    .themeIndicator {
-        font-size: .75em;
-        margin-left: 0;
-        margin-right: 0;
-        color: pink;
-    }
-
-</style>
-
 <script>
 export default {
+
+    props: {
+
+        pageTitle: String,
+        
+        //0 = include, 1 = show
+        backButton: Number
+
+
+    },
     
     methods: {
 
@@ -37,13 +37,9 @@ export default {
 
             this.$router.go(-1);
 
-
         }
 
-
     }
-
-
 
 }
 </script>

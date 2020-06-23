@@ -24,10 +24,10 @@ export default {
   ** Global CSS
   */
   css: [
-    'bulma',
-    '@/assets/styles/lighttheme.scss',
-    '@/assets/styles/darktheme.scss',
-  '@/assets/styles/base.scss'
+    //'bulma',
+    '@/assets/styles/main.scss',
+    '@/assets/styles/darkTheme.scss',
+    '@/assets/styles/lightTheme.scss'
   ],
   /*
   ** Plugins to load before mounting the Aspp
@@ -41,6 +41,7 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/color-mode'
   ],
   /*
   ** Nuxt.js modules
@@ -68,6 +69,18 @@ export default {
   webfontloader: {
     google: {
       families: ['Muli:400,900', 'Roboto Slab:400,900'] //Loads fonts with weights 400 and 900
+    }
+  },
+
+   colorMode: {
+    preference: 'light', // default value of $colorMode.preference
+    fallback: 'light', // fallback value if not system preference found
+    hid: 'nuxt-color-mode-script',
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    cookie: {
+      key: 'nuxt-color-mode',
+
     }
   },
 
