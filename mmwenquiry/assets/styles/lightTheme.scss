@@ -18,6 +18,7 @@ $ltFont: 'Muli', sans-serif;
     background-attachment: fixed;
     background-size:  cover;
     background-color: var(--bg);
+    height: 100%;
 }
 
 .light-mode .exclusive {
@@ -46,3 +47,18 @@ $ltFont: 'Muli', sans-serif;
   
 }
 
+.sizeBtn {
+
+    font-family:  $ltFont;
+    background-color: white;
+    width: 10em;
+    border: 1px solid #e3e3e3;
+
+}
+
+.sizeBtn:focus {
+
+    background-color: $ltBtnAccent;
+    border: none;
+
+}

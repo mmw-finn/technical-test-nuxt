@@ -41,12 +41,20 @@ border-color - exclusive accent color
   --color: #e3e3e3;
   --color-primary: #fdd842;
   --color-secondary: #fdeba1;
-  --bg: #333333;
+  --bg: #616161;
   --bg-secondary: #333333;
   --border-color: #616161;
 }
 
 /* Implementation of themes */
+
+//makes sure all the page elements are 100% because for some reason it wouldn't inherit the height style
+//and this is the only fix I could think of
+html, body, #__nuxt, #__layout, #templateHolder, #mainContent {
+
+  height: 100%;
+
+}
 
 .pageHeader {
 
@@ -60,6 +68,7 @@ border-color - exclusive accent color
   background-image: linear-gradient(to top right, var(--bg-secondary), var(--border-color));
   color: var(--color);
   text-align: center;
+  height: 100%;
 
 }
 
@@ -75,7 +84,7 @@ border-color - exclusive accent color
    color: var(--color-primary);
 }
 
-.button {
+.button, .submitEnquiry {
 
   font-weight: 900;
   background-color: var(--color-primary);
@@ -88,6 +97,13 @@ border-color - exclusive accent color
 
 }
 
+.button:hover, .submitEnquiry:hover {
+
+  color: var(--bg);
+
+
+}
+
 .tile {
 
   margin: 25px;
@@ -96,10 +112,24 @@ border-color - exclusive accent color
 
 }
 
-.productContainer {
+.menuTile {
+
+  margin: 50px;
+
+}
+
+.dataTiles, .box {
 
   background-color: var(--bg);
   color: var(--color);
+
+}
+
+.sizeTile {
+
+display: flex;
+  align-items: center;
+  justify-content: center;
 
 }
 
@@ -135,9 +165,8 @@ border-color - exclusive accent color
 
 }
 
-.backBtn {
+#enquiryForm {
 
-  position: absolute;
-  right: 0px;
+  text-align: left;
 
 }

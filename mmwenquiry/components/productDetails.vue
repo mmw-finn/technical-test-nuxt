@@ -5,11 +5,12 @@
         <p class="exclusive" v-if="pExclusive === 1">EXCLUSIVE</p>
         <img :src="getImgSrc(pID)" class="pimg" />
         <p class="productName">{{ pName }}</p>
-        <p class="productPrice">£{{ pPrice }}.00</p>
+        <p class="productPrice" v-if="pSalePrice != 0"><strike>£{{ pPrice }}.00</strike></p>
+        <p class="productPrice" v-else>£{{ pPrice }}.00</p>
         <b><p class="productSalePrice" v-if="pSalePrice != 0">SALE £{{ pSalePrice }}.00</p></b>
 
         <div @click.prevent="storeItemID(pID)" class="enquiryBtn">
-            <nuxt-link :to="{ name: 'product-id', params: { id:pID } }" class="button is-large is-rounded enqBtn">
+            <nuxt-link :to="{ name: 'product-id', params: { id:pID } }" class="button is-large is-rounded enqBtn" v-if="btnEnabled === 1">
                     ENQUIRE ABOUT THIS ITEM
             </nuxt-link>
         </div>
@@ -28,6 +29,9 @@ export default {
         pPrice: String,
         pSalePrice: String,
         pExclusive: Number,
+
+        //0 = false, 1 = true
+        btnEnabled: Number
 
     },
 

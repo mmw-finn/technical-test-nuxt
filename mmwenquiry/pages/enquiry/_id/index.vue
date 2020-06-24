@@ -2,32 +2,39 @@
 
     <div class="pageContent">
 
+        <div class="header">
+            <pageHeader :pageTitle="'Summary of your Enquiry'" :backButton=1 />
+        </div>
+
         <div class="tile is-ancestor menuTile">
 
-            <div class="tile leftTile is-3">
+            <div class="dataTiles tile is-parent">
 
-                <!-- Data passed in to component to create a view of the item and its details -->
-                <DataHolder :pID="prodID" :pName="prodName" :pPrice="prodPrice" :pSalePrice="prodSalePrice" :pExclusive="prodExclusive" />
-            
-            </div>
-            
-            <div class="tile rightTile is-5">
+                <div class="tile is-child leftTile is-3">
 
-                <div class="column">
-                    <p>Full Name: {{ enqName }}</p>
-                    <p>Email: {{ enqEmail }}</p>
-                    <p>Size of item selected: {{ enqSize }}</p>
-                    <p>Have you found this item cheaper on a competitor website? {{ enqComp }}</p>
-                    <p>Competitor URL: {{ enqCompURL }}</p>
-                    <p>Enquiry Message:</p>
-                    <p>{{ enqMsg }}</p>
-                    
-                    <div class="control">
-                        <button class="button is-primary" id="submitEnquiry" @click="postData()">Submit</button>
+                    <!-- Data passed in to component to create a view of the item and its details -->
+                    <DataHolder :pID="prodID" :pName="prodName" :pPrice="prodPrice" :pSalePrice="prodSalePrice" :pExclusive="prodExclusive" :btnEnabled=0 />
+                
+                </div>
+                
+                <div class="tile is-child rightTile is-5">
+
+                    <div class="column">
+                        <p>Full Name: {{ enqName }}</p>
+                        <p>Email: {{ enqEmail }}</p>
+                        <p>Size of item selected: <b>{{ enqSize }}</b></p>
+                        <p>Have you found this item cheaper on a competitor website? <b>{{ enqComp }} </b></p>
+                        <p>Competitor URL: {{ enqCompURL }}</p>
+                        <p>Enquiry Message:</p>
+                        <p>{{ enqMsg }}</p>
+                        
+                        <div class="control">
+                            <button class="button submitEnquiry" @click.stop.prevent="postData()">Submit</button>
+                        </div>
+
                     </div>
 
                 </div>
-
             </div>
 
         </div>
@@ -39,6 +46,7 @@
 <script>
 
 import DataHolder from '~/components/productDetails.vue'
+import pageHeader from '~/components/headComponent.vue'
 
 export default {
 
@@ -59,7 +67,8 @@ export default {
     
     components: {
 
-        DataHolder
+        DataHolder,
+        pageHeader
 
     },
 
@@ -88,6 +97,8 @@ export default {
 
             var enquiryForm = new FormData();
 
+            const vm = this;
+
             enquiryForm.append('productId',this.enqProdID);
             enquiryForm.append('sizeSelected',this.enqSize);
             enquiryForm.append('fullname',this.enqName);
@@ -101,10 +112,11 @@ export default {
                 
                 console.log(response);
 
-                this.$router.push('/confirmation');
+                vm.$router.push('/confirmation');
 
             })
             .catch(function (error) {
+
                 if(error.response){
                     // Return the Error Response Data
                     console.log(error.response.data);
@@ -129,10 +141,10 @@ export default {
 
 <style scoped>
 
-.enqBtn {
+    .dataTiles {
 
-    visibility: hidden;
+        text-align: left;
 
-}
+    }
 
 </style>

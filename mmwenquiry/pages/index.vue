@@ -1,6 +1,11 @@
 <template>
 
   <div class="pageContent">
+
+    <div class="header">
+      <pageHeader :pageTitle="''" :backButton=0 />
+    </div>
+
     <section class="hero is-full-height has-bg-img">
       <div class="hero-body">
         <div class="container">
@@ -16,12 +21,27 @@
 
 </template>
 
+<script>
+
+import pageHeader from '~/components/headComponent.vue'
+
+export default {
+  
+  components: {
+
+    pageHeader
+
+  }
+
+}
+</script>
+
 <style scoped>
 
 h1 {
 
   font-weight: 900;
-  font-size: 5em;
+  font-size: 4em;
 
 }
 

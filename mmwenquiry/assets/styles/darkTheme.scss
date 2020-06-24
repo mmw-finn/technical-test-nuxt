@@ -17,6 +17,8 @@ $dtFont: 'Roboto Slab', serif;
     background-attachment: fixed;
     background-size:  cover;
     background-color: var(--bg);
+    height: 100%;
+
 }
 
 .dark-mode .exclusive {
@@ -38,3 +40,8 @@ $dtFont: 'Roboto Slab', serif;
   
 }
 
+#sizeSelector {
+
+    font-family: $dtFont;
+
+}

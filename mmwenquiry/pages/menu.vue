@@ -2,23 +2,27 @@
 
     <div class="pageContent">
 
+        <div class="header">
+            <pageHeader :pageTitle="'Product Enquiry Web Application'" :backButton=0 />
+        </div>
+
         <!-- tiles hold product information and link to enquiry form about each one-->
         <div class="tile is-ancestor menuTile">
 
             <div class="tile lefttile">
 
-                <DataHolder :pID="prod1id" :pName="prod1name" :pPrice="prod1price" :pSalePrice="prod1salePrice" :pExclusive="prod1ex" />
+                <DataHolder :pID="prod1id" :pName="prod1name" :pPrice="prod1price" :pSalePrice="prod1salePrice" :pExclusive="prod1ex" :btnEnabled=1 />
             </div>
 
             <div class="tile">
 
-                <DataHolder :pID="prod2id" :pName="prod2name" :pPrice="prod2price" :pSalePrice="prod2salePrice" :pExclusive="prod2ex" />
+                <DataHolder :pID="prod2id" :pName="prod2name" :pPrice="prod2price" :pSalePrice="prod2salePrice" :pExclusive="prod2ex" :btnEnabled=1 />
 
             </div>
             
             <div class="tile righttile">
 
-                <DataHolder :pID="prod3id" :pName="prod3name" :pPrice="prod3price" :pSalePrice="prod3salePrice" :pExclusive="prod3ex" />
+                <DataHolder :pID="prod3id" :pName="prod3name" :pPrice="prod3price" :pSalePrice="prod3salePrice" :pExclusive="prod3ex" :btnEnabled=1 />
 
             </div>
         </div>
@@ -30,12 +34,14 @@
 <script>
 
 import DataHolder from '~/components/productDetails.vue'
+import pageHeader from '~/components/headComponent.vue'
 
 export default {
 
     components: {
 
-        DataHolder
+        DataHolder,
+        pageHeader
 
     },
 

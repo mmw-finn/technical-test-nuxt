@@ -10,8 +10,8 @@
                     <sup><fa :icon="['fas', 'circle']" class="themeIndicator" id="darkTheme" /></sup>
                 </span>
             
-                <h1 class="headTitle">Product Enquiry Web Application</h1>
-                <fa :icon="['fas', 'chevron-circle-left']" class="icon backBtn" @click="historyBack()"/>
+                <h1 class="headTitle">{{ pageTitle }}</h1>
+                <fa :icon="['fas', 'chevron-circle-left']" class="icon backBtn" @click="historyBack()" v-if="backButton === 1"/>
 
             </div>
         </div>
@@ -25,7 +25,7 @@ export default {
 
         pageTitle: String,
         
-        //0 = include, 1 = show
+        //0 = hide, 1 = show
         backButton: Number
 
 
@@ -43,3 +43,21 @@ export default {
 
 }
 </script>
+
+<style scoped>
+
+    .iconContainer {
+
+        left: 0px;
+        position: absolute;
+
+    } 
+
+    .backBtn {
+
+    position: absolute;
+    right: 0px;
+
+    }
+
+</style>
