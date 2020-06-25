@@ -56,6 +56,7 @@ html, body, #__nuxt, #__layout, #templateHolder, #mainContent {
 
 }
 
+//edits the main header
 .pageHeader {
 
   background-color: var(--bg);
@@ -63,6 +64,14 @@ html, body, #__nuxt, #__layout, #templateHolder, #mainContent {
 
 }
 
+.headTitle {
+
+  font-weight: 400;
+  font-size: 2em;
+
+}
+
+//edits formatting for the content of the page
 .pageContent {
 
   background-image: linear-gradient(to top right, var(--bg-secondary), var(--border-color));
@@ -72,11 +81,13 @@ html, body, #__nuxt, #__layout, #templateHolder, #mainContent {
 
 }
 
+//edits the icons
 .icon {
   font-size: 2em;
   color: var(--color); 
 }
 
+//edits appearance of the icons used to display which colour mode is being used
 .themeIndicator {
    font-size: .75em;
    margin-left: 0;
@@ -84,6 +95,7 @@ html, body, #__nuxt, #__layout, #templateHolder, #mainContent {
    color: var(--color-primary);
 }
 
+//formats button appearance
 .button, .submitEnquiry {
 
   font-weight: 900;
@@ -104,6 +116,7 @@ html, body, #__nuxt, #__layout, #templateHolder, #mainContent {
 
 }
 
+//tile formatting
 .tile {
 
   margin: 25px;
@@ -133,6 +146,7 @@ display: flex;
 
 }
 
+//formats product image that's displayed
 .pimg {
 
   height: 256px;
@@ -143,6 +157,7 @@ display: flex;
 
 }
 
+//formats global look of exclusive banner
 .exclusive {
 
   width: 256px;
@@ -151,6 +166,7 @@ display: flex;
 
 }
 
+//formats appearance of error message and sale price text
 .errmsg, .productSalePrice {
 
   color: $red;
@@ -158,13 +174,7 @@ display: flex;
 
 }
 
-.headTitle {
-
-  font-weight: 400;
-  font-size: 2em;
-
-}
-
+//aligns text to the left on the summary page
 #enquiryForm {
 
   text-align: left;

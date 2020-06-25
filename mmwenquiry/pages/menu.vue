@@ -33,6 +33,7 @@
 
 <script>
 
+//imports components
 import DataHolder from '~/components/productDetails.vue'
 import pageHeader from '~/components/headComponent.vue'
 
@@ -45,6 +46,7 @@ export default {
 
     },
 
+    //runs axios get request for details of every product so they can be passed into the data container for the products
     async asyncData({ $axios }) {
 
         //gets all prodct details from the website using axios

@@ -1,38 +1,16 @@
+// dark theme colours
 $dtBtnColor: #fdd842;
 $dtBtnAccent: #fdeba1;
 $dtAccent: #616161;
 $dtExclusiveAccent: #107ccb;
 $dtFont: 'Roboto Slab', serif;
 
+//sets font for page content, headers and the size select option on the form when in dark mode
 .dark-mode .pageContent {
 
     font-family: $dtFont;
   
 }
-
-.dark-mode .has-bg-img {
-    background-image: url("/darkbg.jpg");
-    background-position: center center;
-    background-repeat:  no-repeat;
-    background-attachment: fixed;
-    background-size:  cover;
-    background-color: var(--bg);
-    height: 100%;
-
-}
-
-.dark-mode .exclusive {
-
-    background-color: $dtExclusiveAccent;
-  
-}
-
-.dark-mode #lightTheme {
-
-    visibility: hidden;
-  
-}
-
 .dark-mode .pageHeader {
 
     font-family: $dtFont;
@@ -44,4 +22,30 @@ $dtFont: 'Roboto Slab', serif;
 
     font-family: $dtFont;
 
+}
+
+//sets background image for dark mode
+.dark-mode .has-bg-img {
+    background-image: url("/darkbg.jpg");
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-size:  cover;
+    background-color: var(--bg);
+    height: 100%;
+
+}
+
+//sets the background colour for the exclusive banner in dark mode
+.dark-mode .exclusive {
+
+    background-color: $dtExclusiveAccent;
+  
+}
+
+//hides the light theme indicator icon in dark mode
+.dark-mode #lightTheme {
+
+    visibility: hidden;
+  
 }

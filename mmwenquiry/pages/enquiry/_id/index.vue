@@ -2,6 +2,7 @@
 
     <div class="pageContent">
 
+        <!-- page header; passes through the page title and that the back button should be shown -->
         <div class="header">
             <pageHeader :pageTitle="'Summary of your Enquiry'" :backButton=1 />
         </div>
@@ -19,6 +20,7 @@
                 
                 <div class="tile is-child rightTile is-5">
 
+                    <!-- Column displays the user's input enquiry data from the previous page -->
                     <div class="column">
                         <p>Full Name: {{ enqName }}</p>
                         <p>Email: {{ enqEmail }}</p>
@@ -28,6 +30,7 @@
                         <p>Enquiry Message:</p>
                         <p>{{ enqMsg }}</p>
                         
+                        <!-- when the button is clicked, the data is posted -->
                         <div class="control">
                             <button class="button submitEnquiry" @click.stop.prevent="postData()">Submit</button>
                         </div>
@@ -45,6 +48,7 @@
 
 <script>
 
+//imports components
 import DataHolder from '~/components/productDetails.vue'
 import pageHeader from '~/components/headComponent.vue'
 
@@ -72,6 +76,7 @@ export default {
 
     },
 
+    //runs axios get request for the product details so they can be passed into the data container for the products
     async asyncData({app, store, params}) {
         return app.$axios.get('https://frontendtest.mainlinemenswear.co.uk/product/' + params.id)
         .then((response)=> {
@@ -95,10 +100,13 @@ export default {
 
         postData() {
 
+            //creates new form
             var enquiryForm = new FormData();
 
+            //confines this to variable so can be used with $router.push later
             const vm = this;
 
+            //appends all data to form
             enquiryForm.append('productId',this.enqProdID);
             enquiryForm.append('sizeSelected',this.enqSize);
             enquiryForm.append('fullname',this.enqName);
@@ -107,14 +115,19 @@ export default {
             enquiryForm.append('competitorUrl',this.enqCompURL);
             enquiryForm.append('enquiry',this.enqMsg);
 
+            //posts the enquiry
             this.$axios.post("https://frontendtest.mainlinemenswear.co.uk/submit", enquiryForm)
             .then(function (response) {
                 
+                //logs response to console
                 console.log(response);
 
+                //directs user to confirmation page
                 vm.$router.push('/confirmation');
 
             })
+
+            //catches and processes errors
             .catch(function (error) {
 
                 if(error.response){

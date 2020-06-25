@@ -2,6 +2,7 @@
 
   <div class="pageContent">
 
+    <!-- page header; passes through the page title and that the back button should not be shown -->
     <div class="header">
       <pageHeader :pageTitle="''" :backButton=0 />
     </div>

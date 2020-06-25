@@ -1,15 +1,25 @@
+// light theme colours
 $ltBtnColor: #20c76e;
 $ltBtnAccent: #94e990;
 $ltAccent: #64c1f7;
 $ltExclusiveAccent: #d0eeff;
 $ltFont: 'Muli', sans-serif;
 
+//sets font for light theme content
 .light-mode .pageContent {
 
     font-family: $ltFont;
   
 }
 
+.light-mode .pageHeader {
+
+    font-family: $ltFont;
+  
+  
+}
+
+//sets background image for light mode
 .light-mode .has-bg-img {
 
     background-image: url("/lightbg.jpg");
@@ -21,18 +31,21 @@ $ltFont: 'Muli', sans-serif;
     height: 100%;
 }
 
+//sets the background colour for the exclusive banner in light mode
 .light-mode .exclusive {
 
     background-color: $ltExclusiveAccent;
   
 }
 
+//hides the dark theme indicator icon in light mode
 .light-mode #darkTheme {
 
     visibility: hidden;
   
 }
 
+//makes light mode buttons square instead of having a rounded border
 .light-mode .button {
 
     border-radius: 0px;
@@ -40,13 +53,7 @@ $ltFont: 'Muli', sans-serif;
 
 }
 
-.light-mode .pageHeader {
-
-    font-family: $ltFont;
-  
-  
-}
-
+//formats appearance of buttons used when selecing a size in light mode
 .sizeBtn {
 
     font-family:  $ltFont;
